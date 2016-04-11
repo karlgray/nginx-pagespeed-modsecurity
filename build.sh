@@ -30,7 +30,7 @@ if ! [ $? -eq 0 ]; then
     exit 1
 fi
 
-sudo rpm -ihv nginx*.src.rpm
+rpm -ihv nginx*.src.rpm
 popd
 
 
@@ -70,27 +70,28 @@ pushd ~/rpmbuild/SOURCES
     sudo wget -O /etc/yum.repos.d/slc6-devtoolset.repo https://linux.web.cern.ch/linux/scientific6/docs/repository/cern/devtoolset/slc6-devtoolset.repo
     sudo yum install devtoolset-2-gcc-c++ devtoolset-2-binutils -y
 
-    NPS_VERSION=1.10.33.4
+    NPS_VERSION=1.11.33.0
     wget https://github.com/pagespeed/ngx_pagespeed/archive/release-${NPS_VERSION}-beta.zip -O release-${NPS_VERSION}-beta.zip
     unzip release-${NPS_VERSION}-beta.zip
     pushd ngx_pagespeed-release-${NPS_VERSION}-beta/
     wget https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz
     tar -xzvf ${NPS_VERSION}.tar.gz  # extracts to psol/
+    rm ${NPS_VERSION}.tar.gz
     popd
-    rm -rf ngx_pagespeed
-    mv ngx_pagespeed-release-${NPS_VERSION}-beta/ ngx_pagespeed
+    tar cz ngx_pagespeed-release-${NPS_VERSION}-beta/ >ngx_pagespeed-release-${NPS_VERSION}-beta.tar.gz
+    rm release-${NPS_VERSION}-beta.zip
+    
     
     # Mod Security Module
     git clone -b nginx_refactoring https://github.com/SpiderLabs/ModSecurity.git modsecurity
-    cd modsecurity
+    pushd modsecurity
     ./autogen.sh
     ./configure --enable-standalone-module
     make
+    popd
     sudo mkdir -p /etc/nginx/modules
     tar cvf modsecurity.tar.gz modsecurity
     sudo mv modsecurity /etc/nginx/modules
-    mv modsecurity.tar.gz ~/rpmbuild/SOURCES/
-
 popd
 
 # Obtain a location for the patches, either from /vagrant
@@ -98,7 +99,7 @@ popd
 if [ -d '/vagrant' ]; then
     patch_dir='/vagrant'
 else
-    patch_dir=$(mktemp)
+    patch_dir=$(mktemp -d)
     git clone https://github.com/jcu-eresearch/nginx-custom-build.git "$patch_dir"
 fi
 cp "$patch_dir/nginx-eresearch.patch" ~/rpmbuild/SPECS/
@@ -109,7 +110,7 @@ if ! [ -d '/vagrant' ]; then
 fi
 
 #Prep and patch the Nginx specfile for the RPMs
-cd ~/rpmbuild/SPECS
+pushd ~/rpmbuild/SPECS
 wget https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/nginx.spec
 rpmbuild -ba nginx.spec
 
