@@ -79,6 +79,17 @@ pushd ~/rpmbuild/SOURCES
     popd
     rm -rf ngx_pagespeed
     mv ngx_pagespeed-release-${NPS_VERSION}-beta/ ngx_pagespeed
+    
+    # Mod Security Module
+    git clone -b nginx_refactoring https://github.com/SpiderLabs/ModSecurity.git modsecurity
+    cd modsecurity
+    ./autogen.sh
+    ./configure --enable-standalone-module
+    make
+    sudo mkdir -p /etc/nginx/modules
+    tar cvf modsecurity.tar.gz modsecurity
+    sudo mv modsecurity /etc/nginx/modules
+    mv modsecurity.tar.gz ~/rpmbuild/SOURCES/
 
 popd
 
