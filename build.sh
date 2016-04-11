@@ -92,6 +92,10 @@ pushd ~/rpmbuild/SOURCES
     sudo mkdir -p /etc/nginx/modules
     tar cvf modsecurity.tar.gz modsecurity
     sudo mv modsecurity /etc/nginx/modules
+    
+    # Misc Fixes
+    pushd ~/rpmbuild/SOURCES
+    wget get https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/nginx.vh.example_ssl.conf
 popd
 
 # Obtain a location for the patches, either from /vagrant
