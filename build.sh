@@ -96,6 +96,7 @@ pushd ~/rpmbuild/SOURCES
     # Misc Fixes
     pushd ~/rpmbuild/SOURCES
     wget https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/nginx.vh.example_ssl.conf
+    mv nginx.init.in nginx.init
     popd
     
 popd
