@@ -71,7 +71,7 @@ Source3: nginx.sysconf
 Source4: nginx.conf
 Source5: nginx.vh.default.conf
 Source6: nginx.vh.example_ssl.conf
-Source7: nginx.suse.init
+#Source7: nginx.suse.init
 Source8: nginx.service
 Source9: nginx.upgrade.sh
 Source10: nginx.suse.logrotate
