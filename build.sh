@@ -96,6 +96,8 @@ pushd ~/rpmbuild/SOURCES
     # Misc Fixes
     pushd ~/rpmbuild/SOURCES
     wget get https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/nginx.vh.example_ssl.conf
+    popd
+    
 popd
 
 # Obtain a location for the patches, either from /vagrant
