@@ -93,6 +93,9 @@ pushd ~/rpmbuild/SOURCES
     tar cvf modsecurity.tar.gz modsecurity
     sudo mv modsecurity /etc/nginx/modules
     
+    # Nginx Cache Purge
+    git clone https://github.com/FRiCKLE/ngx_cache_purge.git
+    
     # Misc Fixes
     pushd ~/rpmbuild/SOURCES
     wget https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/nginx.vh.example_ssl.conf
