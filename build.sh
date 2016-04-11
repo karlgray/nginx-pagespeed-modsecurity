@@ -109,10 +109,8 @@ if ! [ -d '/vagrant' ]; then
 fi
 
 #Prep and patch the Nginx specfile for the RPMs
-pushd ~/rpmbuild/SPECS
-patch -p1 < nginx-eresearch.patch
-spectool -g -R nginx.spec
-yum-builddep -y nginx.spec
+cd ~/rpmbuild/SPECS
+wget https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/nginx.spec
 rpmbuild -ba nginx.spec
 
 if ! [ $? -eq 0 ]; then
