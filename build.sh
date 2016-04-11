@@ -118,6 +118,7 @@ fi
 
 #Prep and patch the Nginx specfile for the RPMs
 pushd ~/rpmbuild/SPECS
+mv nginx.spec nginx.spec.orig
 wget https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/nginx.spec
 rpmbuild -ba nginx.spec
 
