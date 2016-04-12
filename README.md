@@ -18,9 +18,9 @@ To use this script you need to create a new username and enable Sudo for it.
   
 Download and run the script using;
 
-  wget https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/build.sh
-  chmod +x build.sh
-  ./build.sh
+```wget https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/build.sh
+chmod +x build.sh
+./build.sh```
 
 If all goes well you will end up with an RPM in ~/rpmbuild/RPMS/x86_64/nginx-1.9.14-1.el6.ngx.x86_64.rpm
 
@@ -30,10 +30,10 @@ Please do not use this script on a live server.
 
 ** To enable sudo on a Redhat server
 Enter this command
- visudo
+visudo
 
 Line 105 will look like this;
- #  %wheel  ALL=(ALL)       ALL
+#  %wheel  ALL=(ALL)       ALL
 Change it to look like this;
- %wheel  ALL=(ALL)       ALL
+%wheel  ALL=(ALL)       ALL
 
