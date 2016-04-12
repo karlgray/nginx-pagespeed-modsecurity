@@ -71,7 +71,7 @@ Source3: nginx.sysconf
 Source4: nginx.conf
 Source5: nginx.vh.default.conf
 Source6: nginx.vh.example_ssl.conf
-#Source7: nginx.suse.init
+Source7: ngx_cache_purge.tar.gz
 Source8: nginx.service
 Source9: nginx.upgrade.sh
 Source10: nginx.suse.logrotate
@@ -102,8 +102,13 @@ Not stripped version of nginx built with the debugging log support.
 
 %prep
 %setup -q
+
 %{__tar} zxvf %{SOURCE11}
 %setup -T -D -a 11
+
+%{__tar} zxvf %{SOURCE7}
+%setup -T -D -a 7
+
 
 %build
 ./configure \
@@ -143,6 +148,7 @@ Not stripped version of nginx built with the debugging log support.
         --with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
         --add-module=%{_builddir}/%{name}-%{version}/ngx_pagespeed-release-%{pagespeed_version} \
         --add-module=/etc/nginx/modules/modsecurity/nginx/modsecurity \
+        --add-module=%{_builddir}/%{name}-%{version}/ngx_cache_purge \
         $*
 make %{?_smp_mflags}
 %{__mv} %{_builddir}/%{name}-%{version}/objs/nginx \
@@ -183,6 +189,7 @@ make %{?_smp_mflags}
         --with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
         --add-module=%{_builddir}/%{name}-%{version}/ngx_pagespeed-release-%{pagespeed_version} \
         --add-module=/etc/nginx/modules/modsecurity/nginx/modsecurity \
+        --add-module=%{_builddir}/%{name}-%{version}/ngx_cache_purge \
         $*
 make %{?_smp_mflags}
 
