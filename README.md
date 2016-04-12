@@ -18,9 +18,11 @@ To use this script you need to create a new username and enable Sudo for it.
   
 Download and run the script using;
 
-```wget https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/build.sh
+```
+wget https://raw.githubusercontent.com/karlgray/nginx-pagespeed-modsecurity/master/build.sh
 chmod +x build.sh
-./build.sh```
+./build.sh
+```
 
 If all goes well you will end up with an RPM in ~/rpmbuild/RPMS/x86_64/nginx-1.9.14-1.el6.ngx.x86_64.rpm
 
