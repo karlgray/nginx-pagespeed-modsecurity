@@ -50,22 +50,7 @@ pushd ~/rpmbuild/SOURCES
     git checkout 80db501
     popd
 
-    #AJP module
-    git clone https://github.com/yaoweibin/nginx_ajp_module.git
-    pushd nginx_ajp_module
-    git checkout bf6cd93
-    popd
-
-    #LDAP authentication module
-    git clone https://github.com/kvspb/nginx-auth-ldap.git
-    pushd nginx-auth-ldap
-    git checkout d0f2f82
-    popd
-
-    #Shibboleth module
-    git clone https://github.com/nginx-shib/nginx-http-shibboleth.git
-
-    #Pagespeed module
+    # Pagespeed module
     sudo rpm --import https://linux.web.cern.ch/linux/scientific6/docs/repository/cern/slc6X/i386/RPM-GPG-KEY-cern
     sudo wget -O /etc/yum.repos.d/slc6-devtoolset.repo https://linux.web.cern.ch/linux/scientific6/docs/repository/cern/devtoolset/slc6-devtoolset.repo
     sudo yum install devtoolset-2-gcc-c++ devtoolset-2-binutils -y
@@ -115,10 +100,9 @@ else
 fi
 cp "$patch_dir/nginx-eresearch.patch" ~/rpmbuild/SPECS/
 cp "$patch_dir/nginx-xslt-html-parser.patch" ~/rpmbuild/SOURCES/
-# Remove temp directory if not Vagrant
-if ! [ -d '/vagrant' ]; then
-    rm -rf "$patch_dir"
-fi
+# Remove temp directory 
+rm -rf "$patch_dir"
+
 
 #Prep and patch the Nginx specfile for the RPMs
 pushd ~/rpmbuild/SPECS
