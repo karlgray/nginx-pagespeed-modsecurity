@@ -144,6 +144,7 @@ Not stripped version of nginx built with the debugging log support.
         --with-file-aio \
         --with-ipv6 \
         --with-debug \
+        --with-http_v2_module \
         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
         --with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
         --add-module=%{_builddir}/%{name}-%{version}/ngx_pagespeed-release-%{pagespeed_version} \
@@ -185,6 +186,7 @@ make %{?_smp_mflags}
         --with-mail_ssl_module \
         --with-file-aio \
         --with-ipv6 \
+        --with-http_v2_module \
         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
         --with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
         --add-module=%{_builddir}/%{name}-%{version}/ngx_pagespeed-release-%{pagespeed_version} \
