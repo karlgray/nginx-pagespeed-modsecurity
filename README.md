@@ -10,8 +10,9 @@ This is a script which will build an Nginx 1.9.14 RPM which includes
 This script was written on and for a Centos 6.7 Server.
 
 There are a few pre-requisites you need to install (as root)
+ <pre>
  yum install vim wget httpd-devel libxml2-devel openssl-devel zlib-devel pcre-devel
-
+</pre>
 To use this script you need to create a new username and enable Sudo for it.
   <pre>
   adduser nginxbuild
