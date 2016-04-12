@@ -30,12 +30,18 @@ Please report any issues you have if you use it.  Any use of this script is at y
 
 Please do not use this script on a live server.
 
-** To enable sudo on a Redhat server
+To enable sudo on a Redhat server
+
 Enter this command
+'''
 visudo
+'''
 
 Line 105 will look like this;
+'''
 #  %wheel  ALL=(ALL)       ALL
+'''
 Change it to look like this;
+'''
 %wheel  ALL=(ALL)       ALL
-
+'''
