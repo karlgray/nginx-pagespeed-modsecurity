@@ -16,6 +16,7 @@ To use this script you need to create a new username and enable Sudo for it.
   <pre>
   adduser nginxbuild
   usermod -aG wheel nginxbuild
+  passwd nginxbuild
   su nginxbuild
   cd ~</pre>
 
