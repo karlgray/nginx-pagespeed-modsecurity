@@ -27,3 +27,13 @@ If all goes well you will end up with an RPM in ~/rpmbuild/RPMS/x86_64/nginx-1.9
 Please report any issues you have if you use it.  Any use of this script is at your own risk.
 
 Please do not use this script on a live server.
+
+** To enable sudo on a Redhat server
+Enter this command
+ visudo
+
+Line 105 will look like this;
+ #  %wheel  ALL=(ALL)       ALL
+Change it to look like this;
+ %wheel  ALL=(ALL)       ALL
+
