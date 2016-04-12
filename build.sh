@@ -95,6 +95,7 @@ pushd ~/rpmbuild/SOURCES
     
     # Nginx Cache Purge
     git clone https://github.com/FRiCKLE/ngx_cache_purge.git
+    tar cz ngx_cache_purge >ngx_cache_purge.tar.gz
     
     # Misc Fixes
     pushd ~/rpmbuild/SOURCES
