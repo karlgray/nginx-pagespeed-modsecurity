@@ -11,7 +11,7 @@ This script was written on and for a Centos 6.7 Server.
 
 To use this script you need to create a new username and enable Sudo for it.
 
-  <preadduser nginxbuild
+  <pre>adduser nginxbuild
   usermod -aG wheel nginxbuild
   su nginxbuild
   cd ~</pre>
