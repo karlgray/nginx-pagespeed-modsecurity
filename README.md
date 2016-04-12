@@ -11,10 +11,10 @@ This script was written on and for a Centos 6.7 Server.
 
 To use this script you need to create a new username and enable Sudo for it.
 
-  adduser nginxbuild
+  <preadduser nginxbuild
   usermod -aG wheel nginxbuild
   su nginxbuild
-  cd ~
+  cd ~</pre>
   
 Download and run the script using;
 
