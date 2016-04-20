@@ -58,7 +58,7 @@ Requires: systemd
 
 Summary: High performance web server
 Name: nginx
-Version: 1.9.14
+Version: 1.9.15
 Release: 1%{?dist}.ngx
 Vendor: nginx inc.
 URL: http://nginx.org/
