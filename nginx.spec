@@ -63,7 +63,7 @@ Release: 1%{?dist}.ngx
 Vendor: nginx inc.
 URL: http://nginx.org/
 
-%define pagespeed_version 1.11.33.0-beta
+%define pagespeed_version 1.13.35.1-beta
 Source0: http://nginx.org/download/%{name}-%{version}.tar.gz
 Source1: logrotate
 Source2: nginx.init
